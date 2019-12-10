@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\node_modules\\.bin",
+    "\\node_modules\\react-scripts",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\action",
+    "\\src\\components\\widgets",
+    "\\src\\config"
+  ],
+  "SelectedNode": "\\src\\App.css",
+  "PreviewInSolutionExplorer": false
+}
