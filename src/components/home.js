@@ -21,6 +21,9 @@ class Home extends Component {
             albums : item
         }));
     }
+    addToFavorites = (album) => {
+        let oldFavorites 
+    }
     renderAlbums = () => {
         const {albums} = this.state;
         return albums && albums.length ?
