@@ -22,3 +22,9 @@ export function getAlbum(id){
                 .catch(error => console.log(error));
     return album;
 }
+
+export function getFavoritesAlbums(){
+    const albums = localStorage.getItem('favorites');
+    return albums;
+
+}

@@ -3,6 +3,8 @@ import Header from './widgets/header';
 import Search from './searchBar/searchbar';
 import * as actions from './action/index';
 import {Link} from 'react-router-dom';
+import { functionTypeAnnotation } from '@babel/types';
+import swal from 'sweetalert';
 
 
 
@@ -22,8 +24,31 @@ class Home extends Component {
         }));
     }
     addToFavorites = (album) => {
-        let oldFavorites 
+        let oldFavorites = JSON.parse(localStorage.getItem('favorites')) ||  [];
+        if(this.checkAlbum(oldFavorites,album)){
+            swal({
+                title : 'Album existe !',
+                text : 'Album déjà en favoris',
+                icon :  'warning'
+            });
+            return false;
+        }
+        oldFavorites.push(album);
+        let favorites = oldFavorites;
+        localStorage.setItem('favorites',JSON.stringify(favorites));
+        swal({
+            title : 'Album ajouté !',
+            text : 'Album déjà ajoute en favoris',
+            icon :  'success'
+        });
     }
+    checkAlbum= (albums,album) => {
+        let found = albums.some(function(item){
+            return item.album.id === album.album.id;
+        });
+        return found;
+    }
+
     renderAlbums = () => {
         const {albums} = this.state;
         return albums && albums.length ?
@@ -40,7 +65,7 @@ class Home extends Component {
                         <div className="card-footer">
                             <div className="links">
                                 <Link to={`/details/${item.album.id}`} className="link"><i className="fas fa-info text-danger"></i></Link>
-                                <a href="/#" className="link" ><i className="fas fa-star text-danger"></i></a>
+                                <a onClick={() => this.addToFavorites(item)} className="link" ><i className="fas fa-star text-danger"></i></a>
                             </div>
                         </div>
                     </div>

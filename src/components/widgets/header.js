@@ -15,7 +15,7 @@ const Header = () => {
         <a className="nav-link" href="/">Accueil <span className="sr-only">(current)</span></a>
       </li>
       <li className="nav-item">
-        <a className="nav-link disabled" href="/#" tabIndex="-1" aria-disabled="true">Favoris</a>
+        <a className="nav-link" href="/favorites">Favoris</a>
       </li>
     </ul>
   </div>
