@@ -9,8 +9,16 @@ const request = axios.create({
     headers: {'x-rapidapi-key' : API_KEY}
 })
 
-export function getAlbums(search = 'eminem'){
+export function getAlbums(search = 'beyonce'){
     const albums = request.get(`search?q=${search}`)
         .then(response => response.data.data)
         .catch(error => console.log(error));
+    return albums;
+}
+
+export function getAlbum(id){
+    const album = request.get(`album/${id}`)
+                .then(response => response.data)
+                .catch(error => console.log(error));
+    return album;
 }
